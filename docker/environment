@@ -1,0 +1,2 @@
+# Source this file from Docker related scripts to set the environment
+IMAGE_NAME="ng-experiments"
