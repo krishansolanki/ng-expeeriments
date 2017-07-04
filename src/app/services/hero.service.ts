@@ -33,6 +33,24 @@ export class HeroService {
     .catch(this.handleError)
   }
 
+  createHero(heroName: string): Promise<any> {
+    return this.getHeroes()
+    .then(heroes => {
+      if (heroes.some((existingHero:Hero): boolean => existingHero.name === heroName)) {
+        return false;
+      }
+
+      return this.http.post(this.heroesUrl, JSON.stringify({name:heroName}), this.headers)
+      .toPromise()
+      .then((res) => {
+        let createdHero = res.json().data as Hero;
+        heroes.push(createdHero);
+        return createdHero;
+      })
+      .catch(this.handleError)
+    })
+  }
+
   private headers = new Headers({'Content-Type':'application/json'});
 
   private handleError(error: any): Promise<any> {

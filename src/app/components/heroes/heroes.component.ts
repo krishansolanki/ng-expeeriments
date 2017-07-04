@@ -13,6 +13,7 @@ import { HeroService } from '../../services/hero.service'
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
+  newHero: Hero;
 
   constructor(
     private router:Router,
