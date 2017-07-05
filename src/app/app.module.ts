@@ -15,6 +15,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component'
 import { HeroService } from './services/hero.service';
 import { CreateHeroComponent } from './components/create-hero/create-hero.component';
+import { DeleteHeroComponent } from './components/delete-hero/delete-hero.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,15 @@ import { CreateHeroComponent } from './components/create-hero/create-hero.compon
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    CreateHeroComponent
+    CreateHeroComponent,
+    DeleteHeroComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    RoutingModule
+    RoutingModule,
   ],
   providers: [HeroService],
   bootstrap: [AppComponent]

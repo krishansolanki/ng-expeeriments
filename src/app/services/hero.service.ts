@@ -51,6 +51,16 @@ export class HeroService {
     })
   }
 
+  deleteHero(hero:Hero): Promise<void> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.delete(url, {headers:this.headers})
+    .toPromise()
+    .then(() => {
+      return null;
+    })
+    .catch(this.handleError);
+  }
+
   private headers = new Headers({'Content-Type':'application/json'});
 
   private handleError(error: any): Promise<any> {

@@ -7,5 +7,6 @@
     <label>name: </label>
     <input [(ngModel)]="hero.name" placeholder="name">
     <button (click)="save()">Save</button>
+    <app-delete-hero [hero]='hero'></app-delete-hero>
   </div>
 </div>
