@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component'
 import { HeroService } from './services/hero.service';
 import { CreateHeroComponent } from './components/create-hero/create-hero.component';
 import { DeleteHeroComponent } from './components/delete-hero/delete-hero.component';
+import { HeroSearchComponent } from './components/hero-search/hero-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DeleteHeroComponent } from './components/delete-hero/delete-hero.compon
     HeroesComponent,
     DashboardComponent,
     CreateHeroComponent,
-    DeleteHeroComponent
+    DeleteHeroComponent,
+    HeroSearchComponent
   ],
   imports: [
     BrowserModule,
