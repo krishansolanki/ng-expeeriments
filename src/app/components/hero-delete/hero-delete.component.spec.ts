@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteHeroComponent } from './delete-hero.component';
+import { HeroDeleteComponent } from './hero-delete.component';
 
 describe('DeleteHeroComponent', () => {
-  let component: DeleteHeroComponent;
-  let fixture: ComponentFixture<DeleteHeroComponent>;
+  let component: HeroDeleteComponent;
+  let fixture: ComponentFixture<HeroDeleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteHeroComponent ]
+      declarations: [ HeroDeleteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteHeroComponent);
+    fixture = TestBed.createComponent(HeroDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

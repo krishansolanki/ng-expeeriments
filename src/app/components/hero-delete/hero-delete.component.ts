@@ -4,11 +4,11 @@ import { HeroService } from '../../services/hero.service';
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-delete-hero',
-  templateUrl: './delete-hero.component.html',
-  styleUrls: ['./delete-hero.component.scss']
+  selector: 'app-hero-delete',
+  templateUrl: './hero-delete.component.html',
+  styleUrls: ['./hero-delete.component.scss']
 })
-export class DeleteHeroComponent implements OnInit {
+export class HeroDeleteComponent implements OnInit {
 
   @Input() hero:Hero;
 
@@ -22,8 +22,7 @@ export class DeleteHeroComponent implements OnInit {
 
   delete(): void {
     this.heroService.deleteHero(this.hero).then(() => {
-      //go back to dashboard
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/heroes');
     });
   }
 }
