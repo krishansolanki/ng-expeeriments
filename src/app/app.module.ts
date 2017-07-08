@@ -11,8 +11,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './components/app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
-import { HeroCreateComponent } from './components/create-hero/hero-create.component';
-import { HeroDeleteComponent } from './components/delete-hero/hero-delete.component';
+import { HeroCreateComponent } from './components/hero-create/hero-create.component';
+import { HeroDeleteComponent } from './components/hero-delete/hero-delete.component';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './components/hero-search/hero-search.component';
 
