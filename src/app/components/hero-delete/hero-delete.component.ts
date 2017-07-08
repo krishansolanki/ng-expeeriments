@@ -22,7 +22,7 @@ export class HeroDeleteComponent implements OnInit {
 
   delete(): void {
     this.heroService.deleteHero(this.hero).then(() => {
-      this.router.navigateByUrl('/heroes');
+      this.router.navigate(['/heroes']);
     });
   }
 }
