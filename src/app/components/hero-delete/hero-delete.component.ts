@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Hero } from '../../models/hero';
 import { HeroService } from '../../services/hero.service';
 import { Router } from '@angular/router'
@@ -6,7 +6,8 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'app-hero-delete',
   templateUrl: './hero-delete.component.html',
-  styleUrls: ['./hero-delete.component.scss']
+  styleUrls: ['./hero-delete.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroDeleteComponent implements OnInit {
 

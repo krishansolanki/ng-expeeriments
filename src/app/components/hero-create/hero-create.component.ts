@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import { HeroService } from '../../services/hero.service'
 
 @Component({
   selector: 'app-hero-create',
   templateUrl: './hero-create.component.html',
-  styleUrls: ['./hero-create.component.scss']
+  styleUrls: ['./hero-create.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroCreateComponent implements OnInit {
   feedback:string;

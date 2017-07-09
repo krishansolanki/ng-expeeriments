@@ -52,7 +52,9 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {},
+    "component": {
+      "changeDetection": "OnPush"
+    },
     "serve": {
       "host": "0.0.0.0",
       "ssl": true,

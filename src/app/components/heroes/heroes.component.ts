@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Hero } from '../../models/hero'
 import { Observable } from 'rxjs/Observable'
 import { Store } from '@ngrx/store';
@@ -10,7 +9,8 @@ import * as fromRoot from '../../state/reducers';
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  styleUrls: ['./heroes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class HeroesComponent implements OnInit {
