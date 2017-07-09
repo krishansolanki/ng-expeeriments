@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Hero } from '../classes/hero'
+import { Hero } from '../models/hero'
 import { Headers, Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -10,11 +11,9 @@ export class HeroService {
 
   constructor(private http:Http) { }
 
-  getHeroes(): Promise<Hero[]> {
+  getHeroes(): Observable<Hero[]> {
     return this.http.get(this.heroesUrl)
-    .toPromise()
-    .then(response => response.json().data as Hero[])
-    .catch(this.handleError)
+    .map(response => response.json().data as Hero[])
   }
 
   getHero(id: number): Promise<Hero> {
@@ -34,7 +33,7 @@ export class HeroService {
   }
 
   createHero(heroName: string): Promise<any> {
-    return this.getHeroes()
+    return this.getHeroes().toPromise()
     .then(heroes => {
       if (heroes.some((existingHero:Hero): boolean => existingHero.name === heroName)) {
         return false;
