@@ -8,6 +8,14 @@ export const reducers = {
   hero: fromHero.reducer
 }
 
-export function selectHeroes(state:State) {
+export function selectHeroHeroes(state:State) {
   return state.hero.heroes;
+}
+
+export function selectHeroSearchResult(state:State) {
+  return state.hero.search.results;
+}
+
+export function selectHeroSearchTerm(state:State) {
+  return state.hero.search.term;
 }

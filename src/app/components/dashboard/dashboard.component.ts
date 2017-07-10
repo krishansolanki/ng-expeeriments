@@ -14,10 +14,8 @@ import * as fromRoot from '../../state/reducers';
 export class DashboardComponent implements OnInit {
   heroes: Observable<Hero[]>;
 
-  constructor(
-    private store: Store<fromRoot.State>
-  ) {
-    this.heroes = store.select(fromRoot.selectHeroes)
+  constructor(private store: Store<fromRoot.State>) {
+    this.heroes = store.select(fromRoot.selectHeroHeroes)
   }
 
   ngOnInit(): void {

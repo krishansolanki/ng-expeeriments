@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import { HeroService } from '../../services/hero.service'
+import { Store } from '@ngrx/store';
+import * as HeroActions from '../../state/hero/hero-actions';
+import * as fromRoot from '../../state/reducers';
 
 @Component({
   selector: 'app-hero-create',
@@ -8,18 +10,14 @@ import { HeroService } from '../../services/hero.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroCreateComponent implements OnInit {
-  feedback:string;
-
-  constructor(private heroService:HeroService) { }
+  constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
 
   }
 
   create(heroName:string): void {
-    this.heroService.createHero(heroName).then((response) => {
-      this.feedback = response ? `${heroName} 'created'` : `${heroName} 'exists'`
-    });
+    this.store.dispatch(new HeroActions.Create(heroName))
   }
 
 }

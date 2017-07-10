@@ -21,7 +21,7 @@ export class HeroesComponent implements OnInit {
     private router:Router,
     private store: Store<fromRoot.State>
     ) {
-      this.heroes = store.select(fromRoot.selectHeroes)
+      this.heroes = store.select(fromRoot.selectHeroHeroes)
     }
 
   ngOnInit(): void {

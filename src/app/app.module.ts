@@ -12,6 +12,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { HeroService }          from './services/hero.service';
+import { HeroSearchService }          from './services/hero-search.service';
 
 import { reducers }             from './state/reducers';
 import { HeroEffects }          from './state/hero/hero-effects';
@@ -45,7 +46,7 @@ import { HeroSearchComponent }  from './components/hero-search/hero-search.compo
     EffectsModule.run(HeroEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
-  providers: [HeroService],
+  providers: [HeroService, HeroSearchService],
   bootstrap: [AppComponent]
 })
 
