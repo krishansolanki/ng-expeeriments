@@ -1,22 +1,30 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http'
+import { BrowserModule }        from '@angular/platform-browser';
+import { FormsModule }          from '@angular/forms';
+import { HttpModule }           from '@angular/http'
+import { NgModule }             from '@angular/core';
+import { StoreModule }          from '@ngrx/store'
+import { EffectsModule }        from '@ngrx/effects';
+import { StoreDevtoolsModule }  from '@ngrx/store-devtools';
 
 import { RoutingModule } from './routing/routing.module';
-
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// Imports for loading & configuring the in-memory web api (remove when api is built)
 import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { AppComponent } from './components/app.component';
-import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component'
-import { HeroService } from './services/hero.service';
-import { CreateHeroComponent } from './components/create-hero/create-hero.component';
-import { DeleteHeroComponent } from './components/delete-hero/delete-hero.component';
-import { HeroSearchComponent } from './components/hero-search/hero-search.component';
+import { HeroService }          from './services/hero.service';
+import { HeroSearchService }          from './services/hero-search.service';
+
+import { reducers }             from './state/reducers';
+import { HeroEffects }          from './state/hero/hero-effects';
+
+import { AppComponent }         from './components/app.component';
+import { DashboardComponent }   from './components/dashboard/dashboard.component';
+import { HeroesComponent }      from './components/heroes/heroes.component';
+import { HeroCreateComponent }  from './components/hero-create/hero-create.component';
+import { HeroDeleteComponent }  from './components/hero-delete/hero-delete.component';
+import { HeroDetailComponent }  from './components/hero-detail/hero-detail.component';
+import { HeroSearchComponent }  from './components/hero-search/hero-search.component';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +32,8 @@ import { HeroSearchComponent } from './components/hero-search/hero-search.compon
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    CreateHeroComponent,
-    DeleteHeroComponent,
+    HeroCreateComponent,
+    HeroDeleteComponent,
     HeroSearchComponent
   ],
   imports: [
@@ -34,8 +42,11 @@ import { HeroSearchComponent } from './components/hero-search/hero-search.compon
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     RoutingModule,
+    StoreModule.provideStore(reducers),
+    EffectsModule.run(HeroEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
-  providers: [HeroService],
+  providers: [HeroService, HeroSearchService],
   bootstrap: [AppComponent]
 })
 

@@ -1,31 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Hero } from '../../classes/hero'
-import { HeroService } from '../../services/hero.service'
+import { Hero } from '../../models/hero'
+import { Observable } from 'rxjs/Observable'
+import { Store } from '@ngrx/store';
+import * as HeroActions from '../../state/hero/hero-actions';
+import * as fromRoot from '../../state/reducers';
 
 @Component({
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss']
+  styleUrls: ['./heroes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class HeroesComponent implements OnInit {
-  heroes: Hero[];
+  heroes: Observable<Hero[]>;
   selectedHero: Hero;
-  newHero: Hero;
 
   constructor(
     private router:Router,
-    private heroService:HeroService
-    ) {}
+    private store: Store<fromRoot.State>
+    ) {
+      this.heroes = store.select(fromRoot.selectHeroHeroes)
+    }
 
   ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.store.dispatch(new HeroActions.List());
   }
 
   onSelect(hero:Hero): void {
